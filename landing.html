@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome - Anchal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0a192f 0%, #112240 100%);
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Segoe UI', sans-serif;
+            position: relative;
+        }
+
+        .landing-content {
+            text-align: center;
+            z-index: 2;
+            color: #fff;
+            padding: 20px;
+        }
+
+        .welcome-text {
+            font-size: 4em;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #e6f1ff, #64ffda);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: gradientText 8s ease infinite;
+        }
+
+        .subtitle {
+            font-size: 1.8em;
+            color: #64ffda;
+            margin-bottom: 30px;
+            text-shadow: 0 0 10px rgba(100, 255, 218, 0.3);
+        }
+
+        .enter-btn {
+            padding: 15px 40px;
+            font-size: 1.2em;
+            background: transparent;
+            border: 2px solid #64ffda;
+            color: #64ffda;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .enter-btn:hover {
+            background: rgba(100, 255, 218, 0.1);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(100, 255, 218, 0.2);
+        }
+
+        /* Heart Animation */
+        .heart {
+            position: absolute;
+            pointer-events: none;
+            animation: floatHeart 4s ease-in-out forwards;
+        }
+
+        @keyframes floatHeart {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) scale(0);
+                opacity: 0;
+            }
+        }
+
+        @keyframes gradientText {
+            0% { filter: hue-rotate(0deg) brightness(1); }
+            50% { filter: hue-rotate(30deg) brightness(1.1); }
+            100% { filter: hue-rotate(0deg) brightness(1); }
+        }
+
+        /* Social Links */
+        .social-links {
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .social-links a {
+            color: #64ffda;
+            font-size: 1.5em;
+            transition: all 0.3s ease;
+            width: 50px;
+            height: 50px;
+            border: 1px solid rgba(100, 255, 218, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-5px);
+            border-color: #64ffda;
+            box-shadow: 0 5px 15px rgba(100, 255, 218, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .welcome-text {
+                font-size: 2.5em;
+            }
+            .subtitle {
+                font-size: 1.2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="landing-content">
+        <h1 class="welcome-text">Welcome to My World</h1>
+        <p class="subtitle">Software Developer & Ethical Hacker</p>
+        <a href="index.html" class="enter-btn">Enter <i class="fas fa-arrow-right"></i></a>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+    </div>
+
+    <script>
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.color = `hsl(${Math.random() * 360}, 100%, 70%)`;
+            heart.style.fontSize = Math.random() * (30 - 10) + 10 + 'px';
+            heart.innerHTML = '❤️';
+            document.body.appendChild(heart);
+
+            // Remove heart after animation
+            setTimeout(() => {
+                heart.remove();
+            }, 4000);
+        }
+
+        // Create hearts periodically
+        setInterval(createHeart, 300);
+
+        // Create hearts on mouse move
+        document.addEventListener('mousemove', (e) => {
+            if(Math.random() > 0.9) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.style.left = e.clientX + 'px';
+                heart.style.top = e.clientY + 'px';
+                heart.style.color = `hsl(${Math.random() * 360}, 100%, 70%)`;
+                heart.style.fontSize = Math.random() * (30 - 10) + 10 + 'px';
+                heart.innerHTML = '❤️';
+                document.body.appendChild(heart);
+
+                setTimeout(() => {
+                    heart.remove();
+                }, 4000);
+            }
+        });
+    </script>
+</body>
+</html> 
